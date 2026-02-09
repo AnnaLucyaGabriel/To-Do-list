@@ -1,0 +1,19 @@
+<h2>Welcome <%= user.username %> 👋</h2>
+
+<form action="/todos/add" method="POST">
+    <input name="title" placeholder="New todo" required>
+    <button>Add</button>
+</form>
+
+<ul>
+    <% user.todos.forEach(todo => { %>
+        <li>
+            <%= todo.completed ? "✅" : "⬜" %>
+            <%= todo.title %>
+            <a href="/todos/toggle/<%= todo._id %>">Toggle</a>
+            <a href="/todos/delete/<%= todo._id %>">Delete</a>
+        </li>
+    <% }) %>
+</ul>
+
+<a href="/logout">Logout</a>
